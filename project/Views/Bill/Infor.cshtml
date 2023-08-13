@@ -1,0 +1,57 @@
+﻿@model IEnumerable<project.Entities.ThongTinHoaHon>
+
+@{
+    ViewData["Title"] = "Infor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+	<!-- Row -->
+	<div class="row">
+		<div class="col-xl-12">
+			<div class="row">
+				<div class="col-xl-12">
+					<div class="page-title flex-wrap">
+						<div>
+							@*<select class="image-select bs-select dashboard-select me-3" aria-label="Default">
+							<option selected>Newest</option>
+							<option value="1">Oldest</option>
+							<option value="2">Recent</option>
+							</select>*@
+							<!-- Button trigger modal -->
+							<a asp-action="Index" asp-controller="Bill" type="button" class="btn btn-outline-danger">
+								Quay lại
+							</a>
+						</div>
+					</div>
+				</div>
+				<!--column-->
+				<div class="col-xl-12 wow fadeInUp" data-wow-delay="1.5s">
+					<div class="table-responsive full-data">
+						<table class="table-responsive-lg table display dataTablesCard student-tab dataTable no-footer" id="example-student">
+							<thead>
+								<tr>
+									<th>Món ăn</th>
+									<th>Số lượng</th>
+									<th>Tổng</th>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach (var item in Model)
+								{
+									<tr>
+										<td><h6>@item.MonAn.TenMonAn</h6></td>
+										<td><h6>@item.SoLuong</h6></td>
+=										<td><h6>@item.Tong</h6></td>
+									</tr>
+								}
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!--/column-->
+			</div>
+		</div>
+	</div>
+</div>
+

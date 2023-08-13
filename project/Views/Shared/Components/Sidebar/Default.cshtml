@@ -1,0 +1,115 @@
+﻿<div class="nav-header">
+	<a href="/" class="brand-logo">
+		<span>Trang chủ</span>
+	</a>
+
+
+	<div class="nav-control">
+		<div class="hamburger">
+			<span class="line"></span><span class="line"></span><span class="line"></span>
+			<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<rect x="22" y="11" width="4" height="4" rx="2" fill="#2A353A" />
+				<rect x="11" width="4" height="4" rx="2" fill="#2A353A" />
+				<rect x="22" width="4" height="4" rx="2" fill="#2A353A" />
+				<rect x="11" y="11" width="4" height="4" rx="2" fill="#2A353A" />
+				<rect x="11" y="22" width="4" height="4" rx="2" fill="#2A353A" />
+				<rect width="4" height="4" rx="2" fill="#2A353A" />
+				<rect y="11" width="4" height="4" rx="2" fill="#2A353A" />
+				<rect x="22" y="22" width="4" height="4" rx="2" fill="#2A353A" />
+				<rect y="22" width="4" height="4" rx="2" fill="#2A353A" />
+			</svg>
+		</div>
+	</div>
+</div>
+<div class="dlabnav">
+	<div class="dlabnav-scroll">
+		<ul class="metismenu" id="menu">
+			<li>
+				<a class="" href="/" aria-expanded="false">
+					<i class="material-symbols-outlined">home</i>
+					<span class="nav-text">Thống kê</span>
+				</a>
+			</li>
+			<li>
+				<a class="" href="/Bill" aria-expanded="false">
+					<i class="material-symbols-outlined">insert_drive_file </i>
+					<span class="nav-text">Hoá đơn</span>
+				</a>
+			</li>
+			@if (User.IsInRole("administrator"))
+			{
+				<li>
+					<a class="" href="/CategoryAccount" aria-expanded="false">
+						<i class="material-symbols-outlined">person</i>
+						<span class="nav-text">Loại tài khoản</span>
+					</a>
+				</li>
+				<li>
+					<a class="" href="/Account" aria-expanded="false">
+						<i class="material-symbols-outlined">person</i>
+						<span class="nav-text">Tài khoản</span>
+					</a>
+				</li>
+			}
+			<li>
+				<a class="" href="/Table" aria-expanded="false">
+					<i class="material-symbols-outlined">restaurant_menu</i>
+					<span class="nav-text">Bàn ăn</span>
+				</a>
+			</li>
+			<li>
+				<a class="" href="/CategoryFood" aria-expanded="false">
+					<i class="material-symbols-outlined">restaurant_menu</i>
+					<span class="nav-text">Loại món ăn</span>
+				</a>
+			</li>
+			<li>
+				<a class="" href="/Food" aria-expanded="false">
+					<i class="material-symbols-outlined">restaurant_menu</i>
+					<span class="nav-text">Món ăn</span>
+				</a>
+			</li>
+
+
+			@*@if (User.Identities.SingleOrDefault(x => x.RoleClaimType == "adminstrator") != null)
+			{
+				<li>
+					<a class="" href="/CategoryAccount" aria-expanded="false">
+						<i class="material-symbols-outlined">CategoryAccount</i>
+						<span class="nav-text">Loại tài khoản</span>
+					</a>
+				</li>
+				<li>
+					<a class="" href="/Account" aria-expanded="false">
+						<i class="material-symbols-outlined">Account</i>
+						<span class="nav-text">Tài khoản</span>
+					</a>
+				</li>
+			}
+			<li class="">
+				<a class="" href="javascript:void(0);" aria-expanded="false">
+					<i class="material-icons">Bàn ăn</i>
+					<span class="nav-text">Bàn ăn</span>
+				</a>
+			</li>
+@*			<li>
+				<a class="" href="/CategoryFood" aria-expanded="false">
+					<i class="material-symbols-outlined">CategoryFood</i>
+					<span class="nav-text">Loại thức ăn</span>
+				</a>
+			</li>*@
+			@*<li>
+				<a class="" href="/Food" aria-expanded="false">
+					<i class="material-symbols-outlined">Food</i>
+					<span class="nav-text">Thức ăn</span>
+				</a>
+			</li>
+			<li>
+				<a class="" href="javascript:void(0);" aria-expanded="false">
+					<i class="material-icons">InformationBill</i>
+					<span class="nav-text">Thông tin hoá đơn</span>
+				</a>
+			</li>*@
+		</ul>
+	</div>
+</div>

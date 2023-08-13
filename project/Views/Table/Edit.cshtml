@@ -1,0 +1,41 @@
+﻿@model project.Entities.BanAn
+
+@{
+    ViewData["Title"] = "Chỉnh sửa bàn ăn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <!-- row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">@ViewBag.Title</h4>
+                </div>
+                <div class="card-body">
+                    <div class="basic-form">
+                        <form class="form-valide-with-icon needs-validation" asp-action="Edit" asp-controller="Table" novalidate>
+                            @if (ViewBag.Message != null)
+                            {
+                                <div class="alert alert-danger">@ViewBag.Message</div>
+                            }
+                            <input type="hidden" asp-for="MaBanAn" />
+                            <div class="mb-3">
+                                <label class="text-label form-label" for="TenLoaiTaiKhoan">Tên bàn ăn</label>
+                                <div class="input-group">
+                                    <input asp-for="Ten" type="text" class="form-control" id="TenLoaiTaiKhoan" placeholder="Nhập tên bàn ăn.." required>
+                                    <div class="invalid-feedback">
+                                        Vui lòng nhập tên bàn ăn
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn me-2 btn-primary">Chỉnh sửa</button>
+                            <a type="button" asp-action="Index" asp-controller="Table" class="btn btn-danger light">Quay lại</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+﻿@model project.Entities.LoaiMonAn
+
+@{
+    ViewData["Title"] = "Tạo món ăn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid">
+    <!-- row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">@ViewBag.Title</h4>
+                </div>
+                <div class="card-body">
+                    <div class="basic-form">
+                        <form class="form-valide-with-icon needs-validation" asp-action="Create" asp-controller="CategoryFood" novalidate>
+                            @if (ViewBag.Message != null)
+                            {
+                                <div class="alert alert-danger">@ViewBag.Message</div>
+                            }
+                            <div class="mb-3">
+                                <label class="text-label form-label" for="TenLoaiMonAn">Tên loại món ăn</label>
+                                <div class="input-group">
+                                    <input asp-for="Ten" type="text" class="form-control" id="TenLoaiMonAn" placeholder="Nhập tên món ăn.." required>
+                                    <div class="invalid-feedback">
+                                        Vui lòng nhập tên món ăn
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn me-2 btn-primary">Tạo mới</button>
+                            <a type="button" asp-action="Index" asp-controller="CategoryFood" class="btn btn-danger light">Quay lại</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

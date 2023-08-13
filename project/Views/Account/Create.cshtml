@@ -1,0 +1,117 @@
+﻿@model project.Entities.TaiKhoan
+
+@{
+    ViewData["Title"] = "Tạo tài khoản";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var listCategoryAccount = (IEnumerable<project.Entities.LoaiTaiKhoan>)ViewData["ListCategoryAccount"];
+    var listGender = (IEnumerable<object>)ViewData["ListGender"];
+}
+
+<div class="container-fluid">
+    <!-- row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">@ViewBag.Title</h4>
+                </div>
+                <div class="card-body">
+                    <div class="basic-form">
+                        <form class="form-valide-with-icon needs-validation" asp-action="Create" asp-controller="Account" novalidate>
+                            @if (ViewBag.Message != null)
+                            {
+                                <div class="alert alert-danger">@ViewBag.Message</div>
+                            }
+                            <div class="mb-3">
+                                <label class="text-label form-label" for="TenLoaiTaiKhoan">Tên loại tài khoản</label>
+                                <div class="input-group">
+                                    <input asp-for="UserName" type="text" class="form-control" id="TenLoaiTaiKhoan" placeholder="Nhập tên loại tài khoản.." required>
+                                    <div class="invalid-feedback">
+                                        Vui lòng nhập tên loại tài khoản
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="text-label form-label" for="TenLoaiTaiKhoan">Mật khẩu</label>
+                                <div class="input-group">
+                                    <input asp-for="Password" type="password" class="form-control" id="MatKhau" placeholder="***" required>
+                                    <div class="invalid-feedback">
+                                        Vui lòng nhập mật khẩu
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="text-label form-label" for="HoTen">Họ và tên</label>
+                                <div class="input-group">
+                                    <input asp-for="HoTen" type="text" class="form-control" id="HoTen" placeholder="Nhập..." required>
+                                    <div class="invalid-feedback">
+                                        Vui lòng nhập họ tên
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="text-label form-label" for="GioiTinh">Giới tính</label>
+                                <div class="input-group">
+                                    <select asp-for="GioiTinh" asp-items="@(new SelectList(listGender, "ID", "Name"))"></select>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="text-label form-label" for="NgaySinh">Ngày sinh</label>
+                                <div class="input-group">
+                                    <input asp-for="NgaySinh" type="date" class="form-control" id="NgaySinh">
+                                    <div class="invalid-feedback">
+                                        Vui lòng nhập ngày sinh
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="text-label form-label" for="SoDienThoai">Số điện thoại</label>
+                                <div class="input-group">
+                                    <input asp-for="Phone" type="text" class="form-control" id="SoDienThoai" placeholder="Nhập..." required>
+                                    <div class="invalid-feedback">
+                                        Vui lòng nhập Số điện thoại
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="text-label form-label" for="DiaChi">Địa chỉ</label>
+                                <div class="input-group">
+                                    <input asp-for="DiaChi" type="text" class="form-control" id="DiaChi" placeholder="Nhập..." required>
+                                    <div class="invalid-feedback">
+                                        Vui lòng nhập địa chỉ
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="text-label form-label" for="Email">Địa chỉ Email</label>
+                                <div class="input-group">
+                                    <input asp-for="Email" type="email" class="form-control" id="Email" placeholder="Nhập..." required>
+                                    <div class="invalid-feedback">
+                                        Vui lòng nhập địa chỉ email
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="text-label form-label" for="LoaiTaiKhoan">Loại tài khoản</label>
+                                <div class="input-group">
+                                    <select asp-for="LoaiTaiKhoanID" asp-items="@(new SelectList(listCategoryAccount, "MaLoaiTaiKhoan","TenLoai"))"></select>
+                                    <div class="invalid-feedback">
+                                        Vui lòng chọn loại tài khoản
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="text-label form-label" for="TrangThai">Trạng thái</label>
+                                <div class="input-group">
+                                    <input asp-for="Status" type="checkbox" id="TrangThai">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn me-2 btn-primary">Tạo mới</button>
+                            <a type="button" asp-action="Index" asp-controller="Account" class="btn btn-danger light">Quay lại</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

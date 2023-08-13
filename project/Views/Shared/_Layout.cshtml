@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="format-detection" content="telephone=no">
+
+	<!-- Mobile Specific -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Page Title Here -->
+	<title>@ViewData["Title"]</title>
+
+	<!-- FAVICONS ICON -->
+	<link rel="shortcut icon" type="image/png" href="~/images/favicon.png">
+	<link href="~/vendor/wow-master/css/libs/animate.css" rel="stylesheet">
+	<link href="~/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="~/vendor/bootstrap-select-country/css/bootstrap-select-country.min.css">
+	<link rel="stylesheet" href="~/vendor/jquery-nice-select/css/nice-select.css">
+	<link href="~/vendor/datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
+
+	<link href="~/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+	<!--swiper-slider-->
+	<link rel="stylesheet" href="~/vendor/swiper/css/swiper-bundle.min.css">
+	<!-- Style css -->
+	<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+	<link href="~/css/style.css" rel="stylesheet">
+	<script src="~/lib/jquery/dist/jquery.js"></script>
+	<script src="~/code.jquery.com_jquery-3.7.0.js"></script>
+
+    @await RenderSectionAsync("css",required: false)
+</head>
+
+<body>
+	@*<div id="preloader">
+		<div class="loader">
+			<div class="dots">
+				<div class="dot mainDot"></div>
+				<div class="dot"></div>
+				<div class="dot"></div>
+				<div class="dot"></div>
+				<div class="dot"></div>
+			</div>
+
+		</div>
+	</div>*@
+	<div id="main-wrapper" class="wallet-open">
+		@await Component.InvokeAsync("Sidebar")
+		@await Component.InvokeAsync("Header")
+		<div class="content-body">
+			@RenderBody()
+		</div>
+	</div>
+
+	<!-- Required vendors -->
+	<script src="~/vendor/global/global.min.js"></script>
+	<script src="~/vendor/chart.js/Chart.bundle.min.js"></script>
+	<script src="~/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+	<!-- Apex Chart -->
+	<script src="~/vendor/apexchart/apexchart.js"></script>
+	<!-- Chart piety plugin files -->
+	<script src="~/vendor/peity/jquery.peity.min.js"></script>
+	<script src="~/vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+	<!--swiper-slider-->
+	<script src="~/vendor/swiper/js/swiper-bundle.min.js"></script>
+
+
+	<!-- Datatable -->
+	<script src="~/vendor/datatables/js/jquery.dataTables.min.js"></script>
+	<script src="~/js/plugins-init/datatables.init.js"></script>
+
+	<!-- Dashboard 1 -->
+	<script src="~/js/dashboard/dashboard-1.js"></script>
+	<script src="~/vendor/wow-master/dist/wow.min.js"></script>
+	<script src="~/vendor/bootstrap-datetimepicker/js/moment.js"></script>
+	<script src="~/vendor/datepicker/js/bootstrap-datepicker.min.js"></script>
+	<script src="~/vendor/bootstrap-select-country/js/bootstrap-select-country.min.js"></script>
+
+	<script src="~/js/dlabnav-init.js"></script>
+	<script src="~/js/custom.min.js"></script>
+	<script src="~/js/demo.js"></script>
+	<script src="~/js/styleSwitcher.js"></script>
+	@await RenderSectionAsync("js",required: false)
+</body>
+	
+
+<!-- Mirrored from themesflat.co/html/protend/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 06 Aug 2023 07:05:31 GMT -->
+</html>

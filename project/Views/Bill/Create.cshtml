@@ -1,0 +1,67 @@
+﻿@model project.Models.BillViewModel
+
+@{
+    ViewData["Title"] = "Tạo hoá đơn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var listBanAn = (IEnumerable<project.Entities.BanAn>)ViewData["ListBanAn"];
+    var listMonAn = (IEnumerable<project.Entities.MonAn>)ViewData["ListMonAn"];
+}
+@section js{
+    <script type="text/javascript" src="~/js/CreateBill.js"></script>
+}
+<div class="container-fluid">
+    <!-- row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">@ViewBag.Title</h4>
+                </div>
+                <div class="card-body">
+                    <div class="basic-form">
+                        @if (ViewBag.Message != null)
+                        {
+                            <div class="alert alert-danger">@ViewBag.Message</div>
+                        }
+                        <div class="mb-3">
+                            <label class="text-label form-label" for="TenLoaiTaiKhoan">Người lập</label>
+                            <div class="input-group">
+                                @User.Identity.Name.ToString()
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="text-label form-label" for="ThueVAT">Thuế VAT</label>
+                            <div class="input-group">
+                                <input asp-for="VAT" type="number" class="form-control" id="ThueVAT" placeholder="Nhập..." required />
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập thuế VAT
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="text-label form-label" for="HoTen">Danh sách bàn ăn</label>
+                            <div class="input-group">
+                                <select asp-for="BanAnID" id="BanAnID" asp-items="@(new SelectList(listBanAn,"MaBanAn","Ten"))"></select>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="text-label form-label" for="HoTen">Danh sách món ăn</label>
+                            <div class="input-group">
+                                <select name="listMonAnOrder" class="w-25" id="listMonAnOrder">
+                                    @foreach (var item in listMonAn)
+                                    {
+                                        <option value="@item.MaMonAn">@item.TenMonAn</option>
+                                    }
+                                </select>
+                                <button class="btn btn-success btn-add" type="button">Thêm</button>
+                            </div>
+                            <ul id="listHoaDon"></ul>
+                        </div>
+                        <button type="button" class="btn me-2 btn-primary btn-submit">Tạo mới</button>
+                        <a asp-action="Index" asp-controller="Account" class="btn btn-danger light">Quay lại</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

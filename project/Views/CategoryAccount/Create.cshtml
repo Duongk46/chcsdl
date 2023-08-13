@@ -1,0 +1,39 @@
+﻿@model project.Entities.LoaiTaiKhoan
+
+@{
+    ViewData["Title"] = "Tạo loại tài khoản";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid">
+    <!-- row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">@ViewBag.Title</h4>
+                </div>
+                <div class="card-body">
+                    <div class="basic-form">
+                        <form class="form-valide-with-icon needs-validation" asp-action="Create" asp-controller="CategoryAccount" novalidate>
+                            @if (ViewBag.Message != null)
+                            {
+                                <div class="alert alert-danger">@ViewBag.Message</div>
+                            }
+                            <div class="mb-3">
+                                <label class="text-label form-label" for="TenLoaiTaiKhoan">Tên loại tài khoản</label>
+                                <div class="input-group">
+                                    <input asp-for="TenLoai" type="text" class="form-control" id="TenLoaiTaiKhoan" placeholder="Nhập tên loại tài khoản.." required>
+                                    <div class="invalid-feedback">
+                                        Vui lòng nhập tên loại tài khoản
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn me-2 btn-primary">Tạo mới</button>
+                            <a type="button" asp-action="Index" asp-controller="CategoryAccount" class="btn btn-danger light">Quay lại</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
