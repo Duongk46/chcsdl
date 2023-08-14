@@ -9,7 +9,7 @@ namespace project.Entities
         [Key]
         public Guid MaHoaDon { get; set; }
         public float VAT { get; set; }
-        public float? TongTien { get; set; }
+        public float TongTien { get; set; }
         public Guid BanAnID { get; set; }
         [NotMapped]
         public virtual BanAn? BanAn { get; set; }
@@ -17,13 +17,5 @@ namespace project.Entities
         public virtual ICollection<ThongTinHoaHon>? ThongTinHoaHons { get; set; } = new HashSet<ThongTinHoaHon>();
         [NotMapped]
         public virtual TaiKhoan? TaiKhoan { get; set; }
-        public HoaDon()
-        {
-            foreach(var item in ThongTinHoaHons)
-            {
-                this.TongTien += item.SoLuong;
-			}
-            this.TongTien = this.TongTien - this.TongTien * (float)(this.VAT / 100);
-        }
     }
 }

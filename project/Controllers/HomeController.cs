@@ -51,15 +51,15 @@ namespace project.Controllers
 				var listFood = await _db.MonAns.Where(x => x.Status).ToListAsync();
 				foreach (var item in listBill)
                 {
-                    listDoanhThu[item.NgayTao.Value.Month] += (float)item.TongTien;
+                    listDoanhThu[item.NgayTao.Value.Month-1] += (float)item.TongTien;
                 }
 				foreach (var item in listEmployee)
 				{
-					listNhanVien[item.NgayTao.Value.Month]++;
+					listNhanVien[item.NgayTao.Value.Month-1]++;
 				}
 				foreach (var item in listFood)
 				{
-					listMonAn[item.NgayTao.Value.Month]++;
+					listMonAn[item.NgayTao.Value.Month-1]++;
 				}
 				return Json(new
                 {

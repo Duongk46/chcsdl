@@ -9,7 +9,7 @@ namespace project.Entities
         [Key]
         public Guid? MaThongTinHoaDon { get; set; }
         public int SoLuong { get; set; }
-        public float Tong { get; set; }
+        public float? Tong { get; set; }
         public Guid? HoaDonID { get; set; }
         public Guid? MonAnID { get; set; }
         [NotMapped]

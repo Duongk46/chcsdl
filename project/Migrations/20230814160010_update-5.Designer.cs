@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using project.Entities;
 
@@ -11,9 +12,10 @@ using project.Entities;
 namespace project.Migrations
 {
     [DbContext(typeof(QuanAnContext))]
-    partial class QuanAnContextModelSnapshot : ModelSnapshot
+    [Migration("20230814160010_update-5")]
+    partial class update5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

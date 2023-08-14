@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using project.Entities;
 using project.Models;
@@ -8,8 +9,10 @@ namespace project.Controllers
 	public class BillController : Controller
 	{
 		private readonly QuanAnContext _db;
-		public BillController(QuanAnContext quanAnContext) {
+		private readonly IConfiguration _configuration;
+		public BillController(QuanAnContext quanAnContext, IConfiguration configuration) {
 			_db = quanAnContext;
+			_configuration = configuration;
 		}
 		[HttpGet]
 		public IActionResult Index()
@@ -17,20 +20,48 @@ namespace project.Controllers
 			ViewData["ListAccount"] = _db.TaiKhoans.ToList();
 			var entity = _db.HoaDons.Include(x => x.BanAn).Include(x => x.ThongTinHoaHons).ToList();
 			//var deleteEntity = entity.Select(x => x.ThongTinHoaHons.Where(y => y.HoaDonID == x.MaHoaDon));
-
 			return View(entity);
 		}
 		[HttpGet]
 		public IActionResult Infor(Guid id)
 		{
 			var entity = _db.ThongTinHoaHons.Where(x => x.HoaDonID == id).Include(x => x.MonAn).ToList();
-			if (entity.Count() == 0)
-			{
-				_db.Remove(_db.HoaDons.FirstOrDefault(x => x.MaHoaDon == id));
-				_db.SaveChanges();
-				return Redirect("/Bill");
-			}
 			return View(entity);
+		}
+
+		[HttpPost]
+		public async Task<IActionResult> DeleteInfor(Guid id)
+		{
+			try
+			{
+				var connString = _configuration.GetConnectionString("QuanAnDB");
+				var sql = new SqlConnection(connString);
+				string query = "DELETE FROM QLQA_THONGTINHOADON WHERE MaThongTinHoaDon = @id";
+				await sql.OpenAsync();
+				using (var command = new SqlCommand(query, sql))
+				{
+					command.Parameters.AddWithValue("@id", id);
+					int rowsAffected = await command.ExecuteNonQueryAsync();
+					if (rowsAffected > 0)
+					{
+						return Json(new
+						{
+							result = true
+						});
+					}
+				}
+				return Json(new
+				{
+					result = false
+				});
+			}
+			catch (Exception ex)
+			{
+				return Json(new
+				{
+					result = false
+				});
+			}
 		}
 		[HttpGet]
 		public IActionResult Create()
@@ -58,12 +89,11 @@ namespace project.Controllers
                         var newItem = new ThongTinHoaHon();
                         newItem.SoLuong = item.Amount;
                         newItem.MonAnID = item.Item;
-                        newItem.Tong = listMonAn.Find(x => x.MaMonAn == newItem.MonAnID).Gia * item.Amount;
                         newEntity.ThongTinHoaHons.Add(newItem);
-						total += newItem.Tong;
-                    }
-					newEntity.TongTien = total - total * (float)(newEntity.VAT/100);
-                    await _db.HoaDons.AddAsync(newEntity);
+						total += listMonAn.Find(x => x.MaMonAn == newItem.MonAnID).Gia * item.Amount;
+					}
+					newEntity.TongTien = total - total * (float)(newEntity.VAT / 100);
+					await _db.HoaDons.AddAsync(newEntity);
                     await _db.SaveChangesAsync();
                     return Json(new
                     {

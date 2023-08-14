@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "4E8MlBHc+yJcW+r3ugJ+sySuhk5NnTAGh3UjmpluI5U=",
+  "Hash": "+dJI4EUYABVTMHOjnIF53zllvNkmOtXz9ylePeDm/lI=",
   "Source": "project",
   "BasePath": "_content/project",
   "Mode": "Default",
@@ -4214,6 +4214,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\highlight.min.js"
+    },
+    {
+      "Identity": "D:\\tailieu\\chcsdl\\source\\project\\wwwroot\\js\\InforBill.js",
+      "SourceId": "project",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\tailieu\\chcsdl\\source\\project\\wwwroot\\",
+      "BasePath": "_content/project",
+      "RelativePath": "js/InforBill.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\InforBill.js"
     },
     {
       "Identity": "D:\\tailieu\\chcsdl\\source\\project\\wwwroot\\js\\plugins-init\\bs-daterange-picker-init.js",
