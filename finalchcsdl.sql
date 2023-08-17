@@ -39,7 +39,7 @@ BEGIN
 	SET Tong = SoLuong * (SELECT Gia FROM QLQA_MONAN m WHERE m.MaMonAn = MonAnID)
 END
 
--- get tổng hoanh thu bằng function
+-- get tổng doanh thu bằng function
 
 CREATE FUNCTION fn_TongDoanhThu
 RETURNS DECIMAL(18, 2)
